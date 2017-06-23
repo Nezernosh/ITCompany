@@ -1,50 +1,59 @@
-﻿@model IEnumerable<ITCompany.Models.Client>
+﻿@model IEnumerable
+<ITCompany.Models.Client>
 
-@{
+    @{
     ViewBag.Title = "Index";
-}
+    ViewBag.PageTitle = "";
+    }
 
-<img src="~/Images/ClientsGet" />
+    <div class="row">
+        <div class="col s12">
+            <div class="subnav">
+                <a href="@Url.Action(" Create")" class="waves-effect add green white-text margin-right"><i
+                    class="material-icons">add</i></a>
+            </div>
+        </div>
+    </div>
 
-@using (Html.BeginForm("ClientsUpload", "Images", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <input type="file" name="uploaded" />
-    <button type="submit">Update photo</button>
-}
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contact)
-        </th>
-        <th></th>
-    </tr>
+    @if (Model.Count > 0) {
+    <div class="row">
+        <div class="col s12">
+            <table class="white width-auto bordered responsive-table">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Contact</th>
+                    <th>E-mail</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($this->vars->client_list as $client): ?>
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.ID)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Contact)</td>
+                    <td class="right-align">
+                        <a class="table-btn blue-grey-text waves-effect" href="@Url.Action(" Edit", new { id=item.ID
+                        })">
+                        <i class="material-icons">mode_edit</i>
+                        </a>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contact)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
-</table>
+                        <a class="table-btn red-text waves-effect" href="@Url.Action(" Delete", new { id=item.ID })">
+                        <i class="material-icons">delete</i>
+                        </a>
+                    </td>
+                </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    } else {
+    <div class="row">
+        <div class="col s12">
+            <h5>No clients</h5>
+        </div>
+    </div>
+    }
