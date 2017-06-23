@@ -35,12 +35,12 @@
                     <td>@Html.DisplayFor(modelItem => item.Title)</td>
                     <td>@Html.DisplayFor(modelItem => item.Contact)</td>
                     <td class="right-align">
-                        <a class="table-btn blue-grey-text waves-effect" href="@Url.Action(" Edit", new { id=item.ID
+                        <a class="table-btn blue-grey-text waves-effect" href="@Url.Action("Edit", new { id=item.ID
                         })">
                         <i class="material-icons">mode_edit</i>
                         </a>
 
-                        <a class="table-btn red-text waves-effect" href="@Url.Action(" Delete", new { id=item.ID })">
+                        <a class="table-btn red-text waves-effect" href="@Url.Action("Delete", new { id=item.ID })">
                         <i class="material-icons">delete</i>
                         </a>
                     </td>
