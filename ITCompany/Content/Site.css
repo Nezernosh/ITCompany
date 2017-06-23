@@ -1,24 +1,453 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿.clearfix:before, .clearfix:after {
+    display: table;
+    content: ' ';
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.clearfix:after {
+    clear: both;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+html {
+    color: rgba(43, 42, 41, .9);
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.page-center {
+    display: table;
+    margin: auto;
+    height: 100%;
+}
+
+.page-center body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+header nav {
+    background-color: rgb(43, 42, 41);
+}
+
+header nav .nav-wrapper > ul > li > a:hover, header nav ul li.active {
+    background-color: rgba(255, 255, 255, .15);
+}
+
+header.white nav ul a {
+    color: rgba(43, 42, 41, 0.9);
+}
+
+footer {
+    background-color: rgba(43, 42, 41, 0.9);
+    padding: 0.75rem 0;
+    color: rgba(255, 255, 255, .87);
+    font-size: 0.9em;
+}
+
+.footer-wrap {
+    padding: 0 0.75rem;
+}
+
+h4 .material-icons {
+    font-size: inherit;
+}
+
+.breadcrumb {
+    margin: 10px 0;
+}
+
+.breadcrumb, .breadcrumb:last-child, .breadcrumb:before {
+    color: rgba(43, 42, 41, .7);
+    font-size: 0.8rem;
+    float: left;
+}
+
+.breadcrumb:last-child {
+    color: rgba(43, 42, 41, 1);
+}
+
+.breadcrumb .material-icons {
+    margin-right: 8px;
+    font-size: 20px !important;
+}
+
+.pagination li.active {
+    background-color: rgba(43, 42, 41, 0.9);
+}
+
+.container {
+    width: 95% !important;
+}
+
+nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+    height: 50px;
+    line-height: 50px;
+}
+
+header.wide nav, header.wide nav .nav-wrapper i, header.wide nav a.button-collapse, header.wide nav a.button-collapse i {
+    height: 64px;
+    line-height: 64px;
+}
+
+.navbar-fixed {
+    height: 50px;
+}
+
+.left-nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    background: rgb(43, 42, 41);
+    margin: 0;
+    overflow-y: auto;
+}
+
+@media only screen and (min-width: 993px) {
+    .with-left-nav {
+        margin-left: 200px;
+    }
+}
+
+.title {
+    color: rgba(43, 42, 41, 1);
+    font-size: 1.35rem;
+    padding: 0 1.5rem;
+    margin: 0;
+    line-height: inherit;
+}
+
+header.white nav {
+    background: #fff;
+    box-shadow: none;
+    border-bottom: 1px solid #eceff1;
+}
+
+.left-nav li a {
+    display: block;
+    padding: 15px;
+    color: rgba(255, 255, 255, 0.9);
+    transition: .1s;
+    position: relative;
+}
+
+.left-nav li a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 1);
+}
+
+.left-nav .active:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #2980B9;
+}
+
+.nav-section {
+    color: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    margin: 15px 0 14px 0;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #555;
+    padding: 6px 0;
+    font-size: 14px;
+}
+
+.login-form {
+    width: 280px;
+    vertical-align: middle;
+}
+
+.login-page {
+    height: 100%;
+}
+
+.vdivider {
+    height: 64px;
+    float: left;
+    border-right: 1px solid #f5f5f5;
+}
+
+.copyright {
+    color: #dadada;
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0.75em;
+}
+
+table.bordered>thead, table.bordered>thead>tr, table.bordered>tbody>tr {
+    border-color: #e3e3e3;
+}
+
+table.bordered>thead>tr:last-child, table.bordered>tbody>tr:last-child {
+    border: none;
+}
+
+.margin-right {
+    margin-right: 10px !important;
+}
+
+.not-full {
+    width: auto;
+}
+
+table .btn, .table-btn {
+    margin: -8px 0;
+    float: left;
+    line-height: 38px;
+    height: 38px;
+    border-radius: 50%;
+    width: 38px;
+    text-align: center;
+}
+
+table .btn, .table-btn i {
+    margin: 7px 0;
+}
+
+.table-btn:hover {
+    background: #f0f0f0;
+}
+
+@media only screen and (min-width: 993px) {
+    table.width-auto {
+        width: auto;
+    }
+
+    table.width-auto th, .width-auto td {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.waves-effect.waves-blue .waves-ripple {
+    background-color: rgba(33, 150, 243, 0.7);
+}
+
+.waves-effect.waves-grey .waves-ripple {
+    background-color: rgba(158, 158, 158, 0.7);
+}
+
+.subnav a {
+    background: #fff;
+    display: block;
+    padding: 15px 30px;
+    float: left;
+    color: rgba(43, 42, 41, .9);
+    line-height: 22px;
+    height: 52px;
+}
+
+.subnav .add {
+    width: 52px;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+}
+
+.subnav a:hover {
+    background: #f5f5f5;
+}
+
+.subnav a.active {
+    color: rgb(3, 155, 229);
+}
+
+.subnav a.active:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background: rgb(3, 155, 229);
+}
+
+.confirm-modal {
+    max-width: 420px;
+}
+
+
+.cursor-grab {
+    cursor: grab;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: -o-grab;
+}
+
+.cursor-grabbing {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: -o-grabbing;
+}
+
+.stage-container {
+    overflow: hidden;
+}
+
+.stage-content {
+    display: table;
+}
+
+.sortable-stage {
+    display: table-cell;
+    float: none !important;
+    min-width: 400px;
+    height: 500px;
+}
+
+.sortable-stage .stage-title {
+    position: relative;
+    margin: 0 0 15px 0;
+    border-bottom: 3px solid;
+}
+
+.sortable-stage .stage-title::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    left: 50%;
+    bottom: -10px;
+    margin: 0 0 0 -10px;
+    border-top: 10px solid;
+    border-top-color: inherit;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+}
+
+.sortable-stage .card {
+    cursor: move;
+}
+
+.action-btns, .project-budget {
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    transition: all .25s;
+}
+
+.action-btns {
+    opacity: 0;
+}
+
+.sortable-card:hover .action-btns {
+    opacity: 1;
+}
+
+.action-btns a {
+    display: inline-block;
+    margin: 0 0 0 20px;
+}
+
+.stage-placeholder {
+    box-sizing: border-box;
+    margin: 0.5rem 0 1rem 0;
+    border: 1px dashed rgba(43, 42, 41, .9);
+    border-radius: 2px;
+}
+
+.static-list-item,
+.sortable-list-item {
+    margin: 0;
+    height: 50px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sortable-list-item .icon-move {
+    cursor: move;
+}
+
+.static-list-item .col,
+.sortable-list-item .col {
+    display: inline-block;
+    height: 100%;
+}
+
+.static-list-item .col *,
+.sortable-list-item .col * {
+    line-height: 50px;
+}
+
+.static-list-item input,
+.sortable-list-item input {
+    display: inline-block;
+    height: 100%;
+    margin: 0;
+    border-color: #f0f0f0;
+}
+
+a.colorPicker {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.colorPicker-toggle {
+    margin: 15px 10px;
+    line-height: 20px;
+}
+
+.sortable-list-item button {
+    height: 100%;
+    border-radius: 0;
+}
+
+.sortable-list-item button i {
+    font-size: 30px;
+}
+
+.sortable-list-save-btn.in-progress {
+    cursor: default;
+}
+
+.colorPicker-window {
+    position: absolute;
+    display: none;
+    padding: 5px 10px;
+    border-right: 1px solid;
+    border-right-color: inherit;
+    cursor: default;
+    z-index: 1;
+}
+
+.colorPicker-window::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    right: -10px;
+    top: 10px;
+    margin: 0 0 0 -10px;
+    border-left: 10px solid;
+    border-left-color: inherit;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.colorPicker-window a.colorPicker {
+    display: block;
+    margin: 5px 3px;
+}
+
+.colorPicker-window a.colorPicker i {
+    line-height: 20px;
+    color: #fff;
 }
