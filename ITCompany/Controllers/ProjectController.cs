@@ -9,14 +9,39 @@ using System.Web.Mvc;
 
 namespace ITCompany.Controllers
 {
+    public class Pair
+    {
+        public int ID { get; set; }
+        public string Title { get; set; }
+    }
+
     public class ProjectController : Controller
     {
         private static ProjectRepo projects;
         private List<Project> model = new List<Project>();
+        private List<Pair> titles = new List<Pair>();
 
         public ProjectController()
-        {        
-            projects = new ProjectRepo();            
+        {
+            projects = new ProjectRepo();
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ITCompanyDB"].ConnectionString))
+            {
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandText = "SELECT * FROM dbo.client";
+                con.Open();
+                SqlDataReader project = cmd.ExecuteReader();
+                while (project.Read())
+                {
+                    int id = (int)project["ID"];
+                    string title = (string)project["Title"];
+                    Pair tempTitle = new Pair
+                    {
+                        ID = id,                     
+                        Title = title,
+                    };
+                    titles.Add(tempTitle);
+                }
+            }
         }
 
         public ActionResult Index()
@@ -27,6 +52,7 @@ namespace ITCompany.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.ClientID = new SelectList(titles, "ID", "Title");
             return View();
         }
 
@@ -39,6 +65,7 @@ namespace ITCompany.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ClientID = new SelectList(titles, "ID", "Title");
             return View();
         }
 
