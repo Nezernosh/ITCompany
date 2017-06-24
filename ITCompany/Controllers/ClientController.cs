@@ -63,31 +63,20 @@ namespace ITCompany.Controllers
         {
             model = clients.GetAll().ToList();
             Client std = model.Where(s => s.ID == id).FirstOrDefault();
-            if (std == null)
-            {
-                return HttpNotFound();
-            }
-            else
-            {
-                return View(std);
-            }
-        }
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirm(Client client)
-        {
+            if (std == null) return HttpNotFound();
+
             try
             {
-                clients.Delete(client);
+                clients.Delete(std);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError(String.Empty, ex);
+                return View(std);
             }
-
-            return View(client);
         }
+
     }
 }
