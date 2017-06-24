@@ -18,36 +18,36 @@
             <div class="section white">
                 <div class="row">
                     <div class="input-field col s12">
-                        @Html.DropDownListFor(model => model.ClientID, null, new { @id = "title" } )
-                        @Html.LabelFor(model => model.ClientID, htmlAttributes: new { @for = "title" })
+                        @Html.DropDownListFor(model => model.ClientID, null, new { @id = "client" } )
+                        <label for="client">Client</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12">
                         @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @id = "title" } })
-                        @Html.LabelFor(model => model.Title, htmlAttributes: new { @for = "title" })
+                        <label for="title">Title</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12">
-                        @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @id = "title" } })
-                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @for = "title" })
+                        @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @id = "status" } })
+                        <label for="status">Status</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12">
-                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @id = "contact" } })
-                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @for = "contact" })
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @id = "description" } })
+                        <label for="description">Description</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12">
-                        @Html.EditorFor(model => model.Budget, new { htmlAttributes = new { @id = "contact" } })
-                        @Html.LabelFor(model => model.Budget, htmlAttributes: new { @for = "contact" })
+                        @Html.EditorFor(model => model.Budget, new { htmlAttributes = new { @id = "budget" } })
+                        <label for="budget">Budget</label>
                     </div>
                 </div>
             </div>

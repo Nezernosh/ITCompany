@@ -39,8 +39,8 @@
                         <i class="material-icons">mode_edit</i>
                         </a>
 
-                        <a class="table-btn red-text waves-effect" href="@Url.Action("Delete", new { id = item.ID })">
-                        <i class="material-icons">delete</i>
+                        <a class="table-btn red-text waves-effect confirm-action" href="@Url.Action("Delete", new { id = item.ID })">
+                            <i class="material-icons">delete</i>
                         </a>
                     </td>
                 </tr>
@@ -56,3 +56,10 @@
         </div>
     </div>
     }
+
+    @{
+    ViewBag.ConfirmModalId = "confirm-modal";
+    ViewBag.ConfirmModalTitle = "Deleting client";
+    ViewBag.ConfirmModalText = "Are you sure?";
+    }
+    @Html.RenderPartial("~/Views/Shared/_ConfirmModal.cshtml")
