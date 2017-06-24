@@ -1,62 +1,45 @@
 ﻿@model ITCompany.Models.Client
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Save";
     ViewBag.PageTitle = "Save client";
 }
 
 
-<div class="row">
-    <div class="col s12">
-        <a href="@Url.Action("Index")" class="breadcrumb">Клиенты</a>
-        <b class="breadcrumb">
-            @if (model != null) {
-                Edit
-            } else {
-                Add
-            }
-        </b>
-    </div>
-</div>
+<form method="post" action="@Url.Action("Save")">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ID)
 
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-@using (Html.BeginForm()) {
-
-@Html.AntiForgeryToken()
-@Html.HiddenFor(model => model.ID)
-
-@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-<div class="row">
-    <div class="col offset-m3 s12 m6 l6">
-        <h5>Company</h5>
-        <div class="section white">
-            <div class="row">
-                <div class="input-field col s12">
-                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @id = "title" } })
-                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @for = "title" })
+    <div class="row">
+        <div class="col offset-m3 s12 m6 l6">
+            <h5>Company</h5>
+            <div class="section white">
+                <div class="row">
+                    <div class="input-field col s12">
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @id = "title" } })
+                        @Html.LabelFor(model => model.Title, htmlAttributes: new { @for = "title" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="input-field col s12">
-                    @Html.EditorFor(model => model.Contact, new { htmlAttributes = new { @id = "contact" } })
-                    @Html.LabelFor(model => model.Contact, htmlAttributes: new { @for = "contact" })
+                <div class="row">
+                    <div class="input-field col s12">
+                        @Html.EditorFor(model => model.Contact, new { htmlAttributes = new { @id = "contact" } })
+                        @Html.LabelFor(model => model.Contact, htmlAttributes: new { @for = "contact" })
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col offset-m3 s12 m6 l12 center">
-        <button type="submit" class="waves-effect waves-light blue btn margin-right">Save</button>
-        <a href="@Url.Action("Index")" class="waves-effect waves-grey btn-flat">Back</a>
+    <div class="row">
+        <div class="col offset-m3 s12 m6 l12 center">
+            <button type="submit" class="waves-effect waves-light blue btn margin-right">Save</button>
+            <a href="@Url.Action("Index")" class="waves-effect waves-grey btn-flat">Back</a>
+        </div>
     </div>
-</div>
-
-
-}
+</form>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

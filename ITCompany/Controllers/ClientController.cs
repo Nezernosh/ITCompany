@@ -25,42 +25,29 @@ namespace ITCompany.Controllers
 
         public ActionResult Create()
         {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create([Bind(Include = "ID, Title, Contact")]Client client)       
-        {
-            if (ModelState.IsValid)
-            {
-                clients.Add(client);
-                return RedirectToAction("Index");
-            }
-            return View();
+            return View("Save", new Client());
         }
 
         public ActionResult Edit(int id)
         {
-            model = clients.GetAll().ToList();
-            Client std = model.Where(s => s.ID == id).FirstOrDefault();
-            if (std == null)
-            {
-                return HttpNotFound();
-            }
-            else
-            {
-                return View(std);
-            }
+            return View("Save", clients.GetAll().ToList().Where(s => s.ID == id).FirstOrDefault());
         }
-
+              
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "ID, Title, Contact")] Client client)
-        {
+        public ActionResult Save([Bind(Include = "ID, Title, Contact")] Client client)
+        {         
             try
             {
                 if (ModelState.IsValid)
                 {
-                    clients.Edit(client);
+                    if (client.ID <= 0)
+                    {
+                        clients.Add(client);                    
+                    }
+                    else
+                    {
+                        clients.Edit(client);
+                    }
                     return RedirectToAction("Index");
                 }
             }
@@ -69,7 +56,7 @@ namespace ITCompany.Controllers
                 ModelState.AddModelError(String.Empty, ex);
             }
 
-            return View(client);
+            return View("Save", client);
         }
 
         public ActionResult Delete(int id)

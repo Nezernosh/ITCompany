@@ -53,44 +53,30 @@ namespace ITCompany.Controllers
         public ActionResult Create()
         {
             ViewBag.ClientID = new SelectList(titles, "ID", "Title");
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create([Bind(Include = "ID, ClientID, Status, Description, Title, Budget")]Project project)
-        {
-            if (ModelState.IsValid)
-            {
-                projects.Add(project);
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.ClientID = new SelectList(titles, "ID", "Title");
-            return View();
-        }
+            return View("Save", new Project());
+        }     
 
         public ActionResult Edit(int id)
         {
-            model = projects.GetAll().ToList();
-            Project std = model.Where(s => s.ID == id).FirstOrDefault();
-            if (std == null)
-            {
-                return HttpNotFound();
-            }
-            else
-            {
-                return View(std);
-            }
+            ViewBag.ClientID = new SelectList(titles, "ID", "Title");
+            return View("Save", projects.GetAll().ToList().Where(s => s.ID == id).FirstOrDefault());
         }
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "ID, ClientID, Status, Description, Title, Budget")] Project project)
+        public ActionResult Save([Bind(Include = "ID, ClientID, Status, Description, Title, Budget")] Project project)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    projects.Edit(project);
+                    if (project.ID <= 0)
+                    {
+                        projects.Add(project);
+                    }
+                    else
+                    {
+                        projects.Edit(project);
+                    }
                     return RedirectToAction("Index");
                 }
             }
@@ -99,7 +85,8 @@ namespace ITCompany.Controllers
                 ModelState.AddModelError(String.Empty, ex);
             }
 
-            return View(project);
+            ViewBag.ClientID = new SelectList(titles, "ID", "Title");
+            return View("Save", project);
         }
 
         public ActionResult Delete(int id)

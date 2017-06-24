@@ -196,15 +196,12 @@
     <Content Include="Views\Project\Index.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
-    <Content Include="Views\Project\Create.cshtml" />
-    <Content Include="Views\Employee\Create.cshtml" />
-    <Content Include="Views\Client\Create.cshtml" />
+    <Content Include="Views\Project\Save.cshtml" />
+    <Content Include="Views\Employee\Save.cshtml" />
     <Content Include="Views\Client\Delete.cshtml" />
-    <Content Include="Views\Client\Edit.cshtml" />
     <Content Include="Views\Employee\Delete.cshtml" />
-    <Content Include="Views\Employee\Edit.cshtml" />
-    <Content Include="Views\Project\Edit.cshtml" />
     <Content Include="Views\Project\Delete.cshtml" />
+    <Content Include="Views\Client\Save.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,57 @@
+﻿@model ITCompany.Models.Employee
+
+@{
+    ViewBag.Title = "Save";
+    ViewBag.PageTitle = "Save employee";
+}
+
+
+<form method="post" action="@Url.Action("Save")">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ID)
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="row">
+        <div class="col offset-m3 s12 m6 l6">
+            <h5>Employee</h5>
+            <div class="section white">
+                <div class="row">
+                    <div class="input-field col s12">
+                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @id = "title" } })
+                        @Html.LabelFor(model => model.FullName, htmlAttributes: new { @for = "title" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @id = "title" } })
+                        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @for = "title" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @id = "title" } })
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @for = "title" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @id = "contact" } })
+                        @Html.LabelFor(model => model.Position, htmlAttributes: new { @for = "contact" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col offset-m3 s12 m6 l12 center">
+            <button type="submit" class="waves-effect waves-light blue btn margin-right">Save</button>
+            <a href="@Url.Action("Index")" class="waves-effect waves-grey btn-flat">Back</a>
+        </div>
+    </div>
+</form>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

@@ -25,42 +25,29 @@ namespace ITCompany.Controllers
 
         public ActionResult Create()
         {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create([Bind(Include = "FullName, Phone, Email, Position")]Employee employee)
-        {
-            if (ModelState.IsValid)
-            {
-                employees.Add(employee);
-                return RedirectToAction("Index");
-            }
-            return View();
-        }
+            return View("Save", new Employee());
+        }      
 
         public ActionResult Edit(int id)
         {
-            model = employees.GetAll().ToList();
-            Employee std = model.Where(s => s.ID == id).FirstOrDefault();
-            if (std == null)
-            {
-                return HttpNotFound();
-            }
-            else
-            {
-                return View(std);
-            }
+            return View("Save", employees.GetAll().ToList().Where(s => s.ID == id).FirstOrDefault());
         }
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "ID, FullName, Phone, Email, Position")] Employee employee)
+        public ActionResult Save([Bind(Include = "ID, FullName, Phone, Email, Position")] Employee employee)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    employees.Edit(employee);
+                    if (employee.ID <= 0)
+                    {
+                        employees.Add(employee);
+                    }
+                    else
+                    {
+                        employees.Edit(employee);
+                    }
                     return RedirectToAction("Index");
                 }
             }
@@ -69,9 +56,9 @@ namespace ITCompany.Controllers
                 ModelState.AddModelError(String.Empty, ex);
             }
 
-            return View(employee);
+            return View("Save", employee);
         }
-
+       
         public ActionResult Delete(int id)
         {
             model = employees.GetAll().ToList();
