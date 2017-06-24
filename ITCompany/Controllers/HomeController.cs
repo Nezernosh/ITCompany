@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace ITCompany.Controllers
 {
     public class HomeController : Controller
@@ -11,7 +12,7 @@ namespace ITCompany.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Project");
         }
     }
 }
