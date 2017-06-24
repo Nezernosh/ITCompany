@@ -52,6 +52,24 @@ $(document).on('submit', '.js-ajax-form', function (e) {
     });
 });
 
+$('.confirm-action').click(function(e) {
+    e.preventDefault();
+
+    var url = $(this).attr('href');
+    var modalId = $(this).data('modal') || 'confirm-modal';
+    var modal = $('#' + modalId);
+
+    $('a.modal-action', modal).click(function() {
+        $('a.modal-action', modal).unbind('click');
+    });
+
+    $('a.confirm-modal-action', modal).click(function() {
+        window.location = url;
+    });
+
+    modal.openModal();
+});
+
 $(document).on('change', '.switch input', function (e) {
     var self = $(this);
     var active = self.parent().find('.active');
