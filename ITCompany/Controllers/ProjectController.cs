@@ -93,31 +93,19 @@ namespace ITCompany.Controllers
         {
             model = projects.GetAll().ToList();
             Project std = model.Where(s => s.ID == id).FirstOrDefault();
-            if (std == null)
-            {
-                return HttpNotFound();
-            }
-            else
-            {
-                return View(std);
-            }
-        }
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirm(Project project)
-        {
+            if (std == null) return HttpNotFound();
+
             try
             {
-                projects.Delete(project);
+                projects.Delete(std);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError(String.Empty, ex);
             }
-
-            return View(project);
+            return View("Index", std);
         }
     }
 }

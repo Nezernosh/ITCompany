@@ -198,10 +198,8 @@
     <Content Include="Views\Client\Index.cshtml" />
     <Content Include="Views\Project\Save.cshtml" />
     <Content Include="Views\Employee\Save.cshtml" />
-    <Content Include="Views\Client\Delete.cshtml" />
-    <Content Include="Views\Employee\Delete.cshtml" />
-    <Content Include="Views\Project\Delete.cshtml" />
     <Content Include="Views\Client\Save.cshtml" />
+    <Content Include="Views\Shared\_ConfirmModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -57,37 +57,25 @@ namespace ITCompany.Controllers
             }
 
             return View("Save", employee);
-        }
-       
+        }     
+
         public ActionResult Delete(int id)
         {
             model = employees.GetAll().ToList();
             Employee std = model.Where(s => s.ID == id).FirstOrDefault();
-            if (std == null)
-            {
-                return HttpNotFound();
-            }
-            else
-            {
-                return View(std);
-            }
-        }
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirm(Employee employee)
-        {
+            if (std == null) return HttpNotFound();
+
             try
             {
-                employees.Delete(employee);
+                employees.Delete(std);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(String.Empty, ex);
+                ModelState.AddModelError(String.Empty, ex);              
             }
-
-            return View(employee);
+            return View("Index", std);
         }
     }
 }

@@ -143,6 +143,5 @@ C:\Users\ClercAhino\Documents\GitHub\ITCompany\ITCompany\bin\ru\System.Web.Razor
 C:\Users\ClercAhino\Documents\GitHub\ITCompany\ITCompany\bin\ru\System.Web.WebPages.resources.dll
 C:\Users\ClercAhino\Documents\GitHub\ITCompany\ITCompany\bin\ru\System.Web.WebPages.Deployment.resources.dll
 C:\Users\ClercAhino\Documents\GitHub\ITCompany\ITCompany\bin\ru\System.Web.WebPages.Razor.resources.dll
-C:\Users\ClercAhino\Documents\GitHub\ITCompany\ITCompany\obj\Debug\ITCompany.csprojResolveAssemblyReference.cache
 C:\Users\ClercAhino\Documents\GitHub\ITCompany\ITCompany\obj\Debug\ITCompany.dll
 C:\Users\ClercAhino\Documents\GitHub\ITCompany\ITCompany\obj\Debug\ITCompany.pdb

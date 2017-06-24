@@ -73,10 +73,9 @@ namespace ITCompany.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(String.Empty, ex);
-                return View(std);
+                ModelState.AddModelError(String.Empty, ex);              
             }
+            return View("Index", std);
         }
-
     }
 }
