@@ -67,7 +67,7 @@ $('.confirm-action').click(function(e) {
         window.location = url;
     });
 
-    modal.openModal();
+    modal.modal('open');
 });
 
 $(document).on('change', '.switch input', function (e) {
